@@ -65,6 +65,13 @@ namespace SortTestHelper {
         cout << sortName << ":" << double(endTime-startTime)/CLOCKS_PER_SEC << "s" << endl;
         return;
     }
+    
+    //值类型复制
+    int* copyIntArray(int a[], int n){
+        int *arr = new int[n];
+        copy(a, a+n, arr);
+        return arr;
+    }
 }
 
 #endif /* SortTestHelper_hpp */

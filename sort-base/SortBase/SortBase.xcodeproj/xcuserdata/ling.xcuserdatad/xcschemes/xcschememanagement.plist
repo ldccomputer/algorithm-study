@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>SelectionSort.xcscheme</key>
+		<key>SortBase.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,7 +12,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>3DA6CEE31FDD0A8A00E6D75C</key>
+		<key>3DA6CF231FDD677D00E6D75C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

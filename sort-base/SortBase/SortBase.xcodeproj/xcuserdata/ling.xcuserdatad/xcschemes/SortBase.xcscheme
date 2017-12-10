@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3DA6CEE31FDD0A8A00E6D75C"
-               BuildableName = "SelectionSort"
-               BlueprintName = "SelectionSort"
-               ReferencedContainer = "container:SelectionSort.xcodeproj">
+               BlueprintIdentifier = "3DA6CF231FDD677D00E6D75C"
+               BuildableName = "SortBase"
+               BlueprintName = "SortBase"
+               ReferencedContainer = "container:SortBase.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3DA6CEE31FDD0A8A00E6D75C"
-            BuildableName = "SelectionSort"
-            BlueprintName = "SelectionSort"
-            ReferencedContainer = "container:SelectionSort.xcodeproj">
+            BlueprintIdentifier = "3DA6CF231FDD677D00E6D75C"
+            BuildableName = "SortBase"
+            BlueprintName = "SortBase"
+            ReferencedContainer = "container:SortBase.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -55,10 +55,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3DA6CEE31FDD0A8A00E6D75C"
-            BuildableName = "SelectionSort"
-            BlueprintName = "SelectionSort"
-            ReferencedContainer = "container:SelectionSort.xcodeproj">
+            BlueprintIdentifier = "3DA6CF231FDD677D00E6D75C"
+            BuildableName = "SortBase"
+            BlueprintName = "SortBase"
+            ReferencedContainer = "container:SortBase.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -74,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3DA6CEE31FDD0A8A00E6D75C"
-            BuildableName = "SelectionSort"
-            BlueprintName = "SelectionSort"
-            ReferencedContainer = "container:SelectionSort.xcodeproj">
+            BlueprintIdentifier = "3DA6CF231FDD677D00E6D75C"
+            BuildableName = "SortBase"
+            BlueprintName = "SortBase"
+            ReferencedContainer = "container:SortBase.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
