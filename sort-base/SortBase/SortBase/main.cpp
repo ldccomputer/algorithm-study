@@ -9,6 +9,7 @@
 #include <iostream>
 #include "Student.hpp"
 #include "SortTestHelper.hpp"
+#include "MergeSort.hpp"
 
 using namespace std;
 
@@ -40,8 +41,8 @@ template <typename T>
 void bubblingSort(T arr[], int n){
     
     for (int i = 0; i < n; i++) {
-        for (int j = i; j < n; j++) {
-            if (arr[j] < arr[j+1]) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j+1]) {
                 swap(arr[j], arr[j+1]);
             }
         }
@@ -82,7 +83,7 @@ void insertionFastSort(T arr[], int n){
         int j;
         for (j = i; j > 0; j--) {
             //当前j = i
-            if (arr[j-1] < e) {
+            if (arr[j-1] > e) {
                 //移后一位
                 arr[j] = arr[j-1];
             }else{
@@ -98,41 +99,51 @@ void insertionFastSort(T arr[], int n){
 int main(int argc, const char * argv[]) {
     
     /*   条件 n = 100000;
-     *   Insert Sort:0.000187s
-     *   Insert Fast Sort:9.06789s
+     *   mergeSort Sort:0.008423s
      *   Selector Sort:7.74933s
      *   bubbling Sort:8.12153s
+     *   Insert Fast Sort:9.06789s
+     *   Insert Sort:9.55222s
      *
      */
     
     int n = 100000;
     //生成随机数字数组
     int *a = SortTestHelper::generateRandomArray(n, 0, n);
-    //执行选择排序
-//    selectionSort(a, n);
-    //打印排序结果
-//    SortTestHelper::printArray(a, n);
-    //计算排序性能
-    SortTestHelper::testSort("Selector Sort", selectionSort, a, n);
-    delete[] a;
     
-
     int *b = SortTestHelper::copyIntArray(a, n);
-    SortTestHelper::testSort("Insert Sort", insertionSort, b, n);
+//    执行选择排序
+//    selectionSort(b, n);
+//    打印排序结果
+//    SortTestHelper::printArray(b, n);
+//    计算排序性能
+    SortTestHelper::testSort("Selector Sort", selectionSort, b, n);
     delete[] b;
+    
 
     int *c = SortTestHelper::copyIntArray(a, n);
-    SortTestHelper::testSort("Insert Fast Sort", insertionFastSort, c, n);
+    SortTestHelper::testSort("Insert Sort", insertionSort, c, n);
     delete[] c;
-    
+
     int *d = SortTestHelper::copyIntArray(a, n);
-    SortTestHelper::testSort("bubbling Sort", bubblingSort, d, n);
+    SortTestHelper::testSort("Insert Fast Sort", insertionFastSort, d, n);
     delete[] d;
+
+    int *e = SortTestHelper::copyIntArray(a, n);
+    SortTestHelper::testSort("bubbling Sort", bubblingSort, e, n);
+    delete[] e;
+
+    int *f = SortTestHelper::copyIntArray(a, n);
+    SortTestHelper::testSort("mergeSort Sort", mergeSort, f, n);
+    delete[] f;
     
     //结构体排序
 //    Student s[3] = { {"D",90}, {"W",100}, {"T",94} };
 //    selectionSort(s, 3);
 //    SortTestHelper::printArray(s, 3);
+    
+//    int w = (1+2)/2;
+//    cout << "xxxx:" << w << endl;
     
     return 0;
 }
