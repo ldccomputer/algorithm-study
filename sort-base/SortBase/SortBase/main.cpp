@@ -73,6 +73,7 @@ void insertionSort(T arr[], int n){
 /*
  * 改进后的插入排序, 未排序的第一位与已排序的部分轮番比较，如果更小，即排序部分向后移一位，
  * 若更大，即值放入空位中。减少swap操作
+ * 插入排序在数字近乎相同的情况下，效率极高，因为其n^2，n的系数极小
  */
 template<typename T>
 void insertionFastSort(T arr[], int n){
@@ -99,11 +100,11 @@ void insertionFastSort(T arr[], int n){
 int main(int argc, const char * argv[]) {
     
     /*   条件 n = 100000;
-     *   mergeSort Sort:0.008423s
-     *   Selector Sort:7.74933s
-     *   bubbling Sort:8.12153s
-     *   Insert Fast Sort:9.06789s
-     *   Insert Sort:9.55222s
+     *   mergeSort Sort:0.015046s
+     *   Insert Fast Sort:4.90452s
+     *   Selector Sort:7.84825s
+     *   Insert Sort:9.56368s
+     *   bubbling Sort:24.049s
      *
      */
     

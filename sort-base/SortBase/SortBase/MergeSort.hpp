@@ -45,9 +45,35 @@ void _merge(T arr[], int l, int mid, int r){
     
 }
 
+/**
+  * 插入排序在数字近乎相同的情况下，效率极高，因为其n^2，n的系数极小
+  */
+template<typename T>
+void insertionSort(T arr[], int l, int r){
+    
+    for (int i = 1+l; i <= r; i ++) {
+        
+        T e = arr[i];
+        int j;
+        for (j = i; j > l; j--) {
+            if (arr[j-1] > e) {
+                arr[j] = arr[j-1];
+            }else{
+                arr[j] = e;
+                break;
+            }
+        }
+    }
+}
+
 template<typename T>
 void _mergeSort(T arr[], int l, int r){
     
+    //
+    if(r-l <= 15){
+        insertionSort(arr, l, r);
+        return;
+    }
     
     if(l >= r){
         return;
