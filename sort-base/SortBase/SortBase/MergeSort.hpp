@@ -67,7 +67,10 @@ void insertionSort(T arr[], int l, int r){
 }
 
 template<typename T>
-void _mergeSort(T arr[], int l, int r){
+/*
+ * 自上向下
+ */
+void _mergeSortTB(T arr[], int l, int r){
     
     //
     if(r-l <= 15){
@@ -81,9 +84,25 @@ void _mergeSort(T arr[], int l, int r){
     
     int mid = (l+r)/2;
     //看下面的数据可得出，左右不断递归，划分一半。等最小集合l>=r，就开始从小集合merge到大集合merge
-    _mergeSort(arr, l, mid);
-    _mergeSort(arr, mid+1, r);
+    _mergeSortTB(arr, l, mid);
+    _mergeSortTB(arr, mid+1, r);
     _merge(arr, l, mid, r);
+}
+
+template<typename T>
+/*
+ * 自下向上
+ */
+void _mergeSortBT(T arr[], int n){
+    
+    //中间划分线
+    for (int sz = 1; sz <= n; sz += sz) {
+        //每小组排序
+        for (int i = 0; i + sz < n; i += sz+sz) {
+            //min避免越界
+            _merge(arr, i, i + sz - 1, min(i+sz+sz-1,n-1));
+        }
+    }
 }
 
 /*
@@ -93,7 +112,8 @@ void _mergeSort(T arr[], int l, int r){
 
 template<typename T>
 void mergeSort(T arr[], int n){
-    _mergeSort(arr, 0, n-1);
+//    _mergeSortTB(arr, 0, n-1);
+    _mergeSortBT(arr, n);
 //    SortTestHelper::printArray(arr, n);
 }
 

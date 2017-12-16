@@ -10,6 +10,7 @@
 #include "Student.hpp"
 #include "SortTestHelper.hpp"
 #include "MergeSort.hpp"
+#include "QuickSort.hpp"
 
 using namespace std;
 
@@ -100,6 +101,7 @@ void insertionFastSort(T arr[], int n){
 int main(int argc, const char * argv[]) {
     
     /*   条件 n = 100000;
+     *   quickSort Sort:0.01103s
      *   mergeSort Sort:0.015046s
      *   Insert Fast Sort:4.90452s
      *   Selector Sort:7.84825s
@@ -112,31 +114,35 @@ int main(int argc, const char * argv[]) {
     //生成随机数字数组
     int *a = SortTestHelper::generateRandomArray(n, 0, n);
     
-    int *b = SortTestHelper::copyIntArray(a, n);
+//    int *b = SortTestHelper::copyIntArray(a, n);
 //    执行选择排序
 //    selectionSort(b, n);
 //    打印排序结果
 //    SortTestHelper::printArray(b, n);
 //    计算排序性能
-    SortTestHelper::testSort("Selector Sort", selectionSort, b, n);
-    delete[] b;
-    
-
-    int *c = SortTestHelper::copyIntArray(a, n);
-    SortTestHelper::testSort("Insert Sort", insertionSort, c, n);
-    delete[] c;
-
-    int *d = SortTestHelper::copyIntArray(a, n);
-    SortTestHelper::testSort("Insert Fast Sort", insertionFastSort, d, n);
-    delete[] d;
-
-    int *e = SortTestHelper::copyIntArray(a, n);
-    SortTestHelper::testSort("bubbling Sort", bubblingSort, e, n);
-    delete[] e;
+//    SortTestHelper::testSort("Selector Sort", selectionSort, b, n);
+//    delete[] b;
+//    
+//
+//    int *c = SortTestHelper::copyIntArray(a, n);
+//    SortTestHelper::testSort("Insert Sort", insertionSort, c, n);
+//    delete[] c;
+//
+//    int *d = SortTestHelper::copyIntArray(a, n);
+//    SortTestHelper::testSort("Insert Fast Sort", insertionFastSort, d, n);
+//    delete[] d;
+//
+//    int *e = SortTestHelper::copyIntArray(a, n);
+//    SortTestHelper::testSort("bubbling Sort", bubblingSort, e, n);
+//    delete[] e;
 
     int *f = SortTestHelper::copyIntArray(a, n);
     SortTestHelper::testSort("mergeSort Sort", mergeSort, f, n);
     delete[] f;
+    
+    int *g = SortTestHelper::copyIntArray(a, n);
+    SortTestHelper::testSort("quickSort Sort", quickSort, g, n);
+    delete[] g;
     
     //结构体排序
 //    Student s[3] = { {"D",90}, {"W",100}, {"T",94} };
