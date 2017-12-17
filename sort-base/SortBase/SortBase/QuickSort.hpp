@@ -15,8 +15,17 @@
 
 using namespace std;
 
+
+/*
+ *  缺点：完全有序的数据，每次都取第一位进行分组，退化为O(n^2)
+ *  优化方案：随机取1位作为分组参考值
+ */
+
 template <typename T>
 int _partition(T arr[], int l, int r){
+    
+    //为了避免出现完全有序，每次取第一位为参考导致退化为O(n^2)的情况,随机取1位
+    swap(arr[l], arr[rand()%(r-l+1)+l]);
     
     //拿第一位做参考值
     T v = arr[l];
@@ -57,6 +66,8 @@ void _quickSort(T arr[], int l, int r){
 
 template <typename T>
 void quickSort(T arr[], int n){
+    
+    srand(time(NULL));
     _quickSort(arr, 0, n-1);
 }
 
