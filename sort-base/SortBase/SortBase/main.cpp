@@ -110,7 +110,16 @@ int main(int argc, const char * argv[]) {
      *
      */
     
-    int n = 100000;
+    /*  n = 1000000;
+     *  越有序的情况下 三路 >> 两路 >> 一路
+     *  随机的情况下   两路 > 一路 > 三路
+     *  quickSort Sort:0.140229s
+     *  quickSortTwoWay Sort: 0.132024s
+     *  quickSortThreeWay Sort:0.16163s
+     *  mergeSort Sort:0.166015s
+     */
+    
+    int n = 1000000;
     //生成随机数字数组
     int *a = SortTestHelper::generateRandomArray(n, 0, n);
     
