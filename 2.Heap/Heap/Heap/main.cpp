@@ -8,7 +8,6 @@
 
 #include <iostream>
 #include "MaxHeap.hpp"
-#include "HeapTestHelper.hpp"
 
 using namespace std;
 
@@ -17,12 +16,17 @@ int main(int argc, const char * argv[]) {
     MaxHeap<int> maxheap = MaxHeap<int>(100);
     cout<<maxheap.size()<<endl;
     
+    //堆插入元素
     srand(time(NULL));
     for (int i = 0; i < 15; i++) {
         maxheap.insert(rand()%100);
     }
     maxheap.testPrint();
     
+    //堆取出最大元素
+    while (!maxheap.isEmpty()) {
+        cout<<maxheap.extractMax()<<" ";
+    }
     
     return 0;
 }

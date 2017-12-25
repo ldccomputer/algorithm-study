@@ -26,7 +26,6 @@
 		3DF226551FF1497E00A4717A /* Heap */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Heap; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DF226581FF1497E00A4717A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		3DF226601FF1499500A4717A /* MaxHeap.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MaxHeap.hpp; sourceTree = "<group>"; };
-		3DF226631FF14BD200A4717A /* HeapTestHelper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = HeapTestHelper.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +60,6 @@
 			children = (
 				3DF226581FF1497E00A4717A /* main.cpp */,
 				3DF226601FF1499500A4717A /* MaxHeap.hpp */,
-				3DF226631FF14BD200A4717A /* HeapTestHelper.hpp */,
 			);
 			path = Heap;
 			sourceTree = "<group>";

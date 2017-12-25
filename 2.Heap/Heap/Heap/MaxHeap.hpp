@@ -23,6 +23,7 @@ private:
     int count;
     int capacity;
     
+    //上移
     void shiftUp(int k){
         //子节点要比父节点小
         while (k > 1 && data[k/2] < data[k]) {
@@ -31,8 +32,30 @@ private:
         }
     }
     
+    //下移
+    void shiftDown(int k){
+        
+        while (2*k <= count) { //保证有左节点
+            //代表要与k交换位置的节点
+            int j = 2*k;
+            //有右节点，而且右节点比左节点大
+            if ( j+1 <= count && data[j+1] > data[j]) {
+                j += 1;
+            }
+            
+            //k节点大于子节点
+            if (data[k] >= data[j]) {
+                break;
+            }
+            
+            swap(data[k], data[j]);
+            k = j;
+        }
+    }
+    
 public:
     MaxHeap(int capacity){
+        //从1开始
         data = new Item[capacity+1];
         count = 0;
         this->capacity = capacity;
@@ -50,14 +73,29 @@ public:
         return count == 0;
     }
     
+    //插入
     void insert(Item item){
         assert(count + 1 <= capacity);
         
-        //先插入数组最后一位
+        //先插入数组最后一位,0位留空
         data[count+1] = item;
         count ++;
         //再进行堆的移位操作
         shiftUp(count);
+    }
+    
+    //移出最大节点
+    Item extractMax(){
+        assert(count > 0);
+        
+        Item ret = data[1];
+        //将最大父节点与末位交换位置
+        swap(data[1], data[count]);
+        //移除父节点
+        count --;
+        //排序
+        shiftDown(1);
+        return ret;
     }
     
 public:
