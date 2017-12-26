@@ -98,12 +98,53 @@ void insertionFastSort(T arr[], int n){
     }
 }
 
+//从0开始，所以父子节点的规律上 self = 2*super+1
+template <typename T>
+void _shifDown(T arr[], int n, int k){
+    
+    while (2*k+1 < n) { //保证有左节点
+        //代表要与k交换位置的节点
+        int j = 2*k+1;
+        //有右节点，而且右节点比左节点大
+        if ( j+1 < n && arr[j+1] > arr[j]) {
+            j += 1;
+        }
+        
+        //k节点大于子节点
+        if (arr[k] >= arr[j]) {
+            break;
+        }
+        
+        swap(arr[k], arr[j]);
+        k = j;
+    }
+}
+
+//heapify
+//原地排序，节省空间，不再创建另一个数组空间
+//从0开始，最后一个非叶子节点的索引上 (count-1)/2
+template <typename T>
+void heapOldSpaceSort(T arr[], int n){
+    
+    for (int i = (n-1)/2;  i>= 0; i--) {
+        _shifDown(arr, n, i);
+    }
+    
+    for (int i = n-1; i>0; i--) {
+        //将最大的放到后面
+        swap(arr[0], arr[i]);
+        //重新排序
+        _shifDown(arr, i, 0);
+    }
+}
+
 
 int main(int argc, const char * argv[]) {
     
     /*   条件 n = 100000;
      *   quickSort Sort:0.01103s
      *   mergeSort Sort:0.015046s
+     *   heapOldSpaceSort Sort:0.016547s
      *   headSort2 Sort:0.017597s
      *   headSort1 Sort:0.019642s
      *   Insert Fast Sort:4.90452s
@@ -120,12 +161,13 @@ int main(int argc, const char * argv[]) {
      *  quickSortTwoWay Sort: 0.132024s
      *  quickSortThreeWay Sort:0.16163s
      *  mergeSort Sort:0.166015s
+     *  heapOldSpaceSort Sort:0.216267s
      *  headSort2 Sort:0.234502s
      *  headSort1 Sort:0.261806s
      *
      */
     
-    int n = 100000;
+    int n = 1000000;
     //生成随机数字数组
     int *a = SortTestHelper::generateRandomArray(n, 0, n);
     
@@ -166,6 +208,10 @@ int main(int argc, const char * argv[]) {
     int *i = SortTestHelper::copyIntArray(a, n);
     SortTestHelper::testSort("headSort2 Sort", heapSort2, i, n);
     delete[] i;
+    
+    int *j = SortTestHelper::copyIntArray(a, n);
+    SortTestHelper::testSort("heapOldSpaceSort Sort", heapOldSpaceSort, j, n);
+    delete[] j;
     
     //结构体排序
 //    Student s[3] = { {"D",90}, {"W",100}, {"T",94} };

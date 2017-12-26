@@ -23,7 +23,7 @@ private:
     int count;
     int capacity;
     
-    //上移
+    //上移  自下向上排序
     void shiftUp(int k){
         //子节点要比父节点小
         while (k > 1 && data[k/2] < data[k]) {
@@ -32,7 +32,7 @@ private:
         }
     }
     
-    //下移
+    //下移 自上向下排序
     void shiftDown(int k){
         
         while (2*k <= count) { //保证有左节点
