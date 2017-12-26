@@ -11,6 +11,7 @@
 #include "SortTestHelper.hpp"
 #include "MergeSort.hpp"
 #include "QuickSort.hpp"
+#include "HeapSort.hpp"
 
 using namespace std;
 
@@ -103,6 +104,8 @@ int main(int argc, const char * argv[]) {
     /*   条件 n = 100000;
      *   quickSort Sort:0.01103s
      *   mergeSort Sort:0.015046s
+     *   headSort2 Sort:0.017597s
+     *   headSort1 Sort:0.019642s
      *   Insert Fast Sort:4.90452s
      *   Selector Sort:7.84825s
      *   Insert Sort:9.56368s
@@ -117,9 +120,12 @@ int main(int argc, const char * argv[]) {
      *  quickSortTwoWay Sort: 0.132024s
      *  quickSortThreeWay Sort:0.16163s
      *  mergeSort Sort:0.166015s
+     *  headSort2 Sort:0.234502s
+     *  headSort1 Sort:0.261806s
+     *
      */
     
-    int n = 1000000;
+    int n = 100000;
     //生成随机数字数组
     int *a = SortTestHelper::generateRandomArray(n, 0, n);
     
@@ -145,13 +151,21 @@ int main(int argc, const char * argv[]) {
 //    SortTestHelper::testSort("bubbling Sort", bubblingSort, e, n);
 //    delete[] e;
 
-    int *f = SortTestHelper::copyIntArray(a, n);
-    SortTestHelper::testSort("mergeSort Sort", mergeSort, f, n);
-    delete[] f;
+//    int *f = SortTestHelper::copyIntArray(a, n);
+//    SortTestHelper::testSort("mergeSort Sort", mergeSort, f, n);
+//    delete[] f;
+//
+//    int *g = SortTestHelper::copyIntArray(a, n);
+//    SortTestHelper::testSort("quickSort Sort", quickSort, g, n);
+//    delete[] g;
     
-    int *g = SortTestHelper::copyIntArray(a, n);
-    SortTestHelper::testSort("quickSort Sort", quickSort, g, n);
-    delete[] g;
+    int *h = SortTestHelper::copyIntArray(a, n);
+    SortTestHelper::testSort("headSort1 Sort", heapSort1, h, n);
+    delete[] h;
+    
+    int *i = SortTestHelper::copyIntArray(a, n);
+    SortTestHelper::testSort("headSort2 Sort", heapSort2, i, n);
+    delete[] i;
     
     //结构体排序
 //    Student s[3] = { {"D",90}, {"W",100}, {"T",94} };
