@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3DCEFBED1FF3D8F500463319 /* IndexHeap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCEFBEB1FF3D8F500463319 /* IndexHeap.cpp */; };
 		3DF226591FF1497E00A4717A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DF226581FF1497E00A4717A /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3DCEFBEB1FF3D8F500463319 /* IndexHeap.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = IndexHeap.cpp; sourceTree = "<group>"; };
+		3DCEFBEC1FF3D8F500463319 /* IndexHeap.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IndexHeap.hpp; sourceTree = "<group>"; };
 		3DF226551FF1497E00A4717A /* Heap */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Heap; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DF226581FF1497E00A4717A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		3DF226601FF1499500A4717A /* MaxHeap.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MaxHeap.hpp; sourceTree = "<group>"; };
@@ -62,6 +65,8 @@
 				3DF226581FF1497E00A4717A /* main.cpp */,
 				3DF226601FF1499500A4717A /* MaxHeap.hpp */,
 				3DF56E7D1FF2819F00E3BBAD /* HeapSort.hpp */,
+				3DCEFBEB1FF3D8F500463319 /* IndexHeap.cpp */,
+				3DCEFBEC1FF3D8F500463319 /* IndexHeap.hpp */,
 			);
 			path = Heap;
 			sourceTree = "<group>";
@@ -123,6 +128,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DCEFBED1FF3D8F500463319 /* IndexHeap.cpp in Sources */,
 				3DF226591FF1497E00A4717A /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
