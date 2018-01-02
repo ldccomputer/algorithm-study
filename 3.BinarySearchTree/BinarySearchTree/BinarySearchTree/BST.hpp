@@ -32,6 +32,7 @@ private:
     
     Node *root;
     int count;
+
     
 public:
     BST(){
@@ -48,6 +49,29 @@ public:
     
     bool isEmpty(){
         return  count == 0;
+    }
+    
+    //二叉搜索树插入
+    void insert(Key key, Value value){
+        root = insert(root, key ,value);
+    }
+    
+private:
+    //向以node为根的二叉搜索中，插入节点(key,value)
+    //从上向下做比较，当比左节点大的时候，就以左节点为根继续比较
+    Node* insert(Node *node, Key key, Value value){
+        if (node == NULL) {
+            count ++;
+            return new Node(key,value);
+        }
+        
+        if (key == node->key) { //key刚好相同，更新value
+            node->value = value;
+        }else if (key < node->key){ //key位于左节点
+            node->left = insert(node->left, key, value);
+        }else{ //key位于右节点
+            node->right = insert(node->right, key, value);
+        }
     }
 };
 
