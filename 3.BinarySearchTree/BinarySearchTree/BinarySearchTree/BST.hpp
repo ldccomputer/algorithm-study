@@ -56,6 +56,16 @@ public:
         root = insert(root, key ,value);
     }
     
+    //二叉搜索数查找-包含
+    bool contain(Key key){
+        return contain(key);
+    }
+    
+    //二叉搜索树查找-搜索
+    Value* search(Key key){
+        return search(root, key)
+    }
+    
 private:
     //向以node为根的二叉搜索中，插入节点(key,value)
     //从上向下做比较，当比左节点大的时候，就以左节点为根继续比较
@@ -73,6 +83,35 @@ private:
             node->right = insert(node->right, key, value);
         }
     }
+    
+    //查看以node为根的二分搜索树中是否包含键值为key的节点
+    bool contain(Node* node, Key key){
+        if (node == NULL) {
+            return false;
+        }
+        if (key == node->key) {
+            return true;
+        }else if (key < node->key){
+            return contain(node->left, key);
+        }else{
+            return contain(node->right, key);
+        }
+    };
+    
+    //在以node为根的二分搜索树中查找key所对应的value,
+    //Value* -> 在C++中，返回值若不是void，即不能为空，如果返回值可能为空，我们可以返回它的指针地址，指针地址可指向空
+    Value* search(Node* node, Key key){
+        if (node == NULL) {
+            return NULL;
+        }
+        if (key == node->key) {
+            return &(node->key);
+        }else if (key < node->key){
+            return search(node->left, key);
+        }else{
+            return search(node->right, key);
+        }
+    };
 };
 
 #endif /* BST_hpp */
