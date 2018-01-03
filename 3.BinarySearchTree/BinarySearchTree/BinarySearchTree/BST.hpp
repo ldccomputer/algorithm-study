@@ -10,6 +10,7 @@
 #define BST_hpp
 
 #include <stdio.h>
+#include <iostream>
 
 using namespace std;
 
@@ -40,7 +41,8 @@ public:
         count = 0;
     }
     ~BST(){
-        
+        //后序排序 正好符合从下向上销毁节点
+        destory(root);
     }
     
     int size(){
@@ -63,7 +65,22 @@ public:
     
     //二叉搜索树查找-搜索
     Value* search(Key key){
-        return search(root, key)
+        return search(root, key);
+    }
+    
+    //前序遍历
+    void preOrder(){
+        preOrder(root);
+    }
+    
+    //中序遍历
+    void inOrder(){
+        inOrder(root);
+    }
+    
+    //后序遍历
+    void postOrder(){
+        postOrder(root);
     }
     
 private:
@@ -112,6 +129,41 @@ private:
             return search(node->right, key);
         }
     };
+    
+    void preOrder(Node *node){
+        if (node != NULL) {
+            cout<<node->key<<endl;
+            preOrder(node->left);
+            preOrder(node->right);
+        }
+    }
+
+    void inOrder(Node *node){
+        if (node != NULL) {
+            inOrder(node->left);
+            cout<<node->key<<endl;
+            inOrder(node->right);
+        }
+    }
+
+    void postOrder(Node *node){
+        if (node != NULL) {
+            postOrder(node->left);
+            postOrder(node->right);
+            cout<<node->key<<endl;
+        }
+    }
+    
+    void destory(Node *node){
+        if (node != NULL) {
+            destory(node->left);
+            destory(node->right);
+            
+            delete node;
+            count--;
+        }
+    }
+    
 };
 
 #endif /* BST_hpp */
