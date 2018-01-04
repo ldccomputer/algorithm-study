@@ -141,6 +141,10 @@ public:
         }
     }
     
+    // 从二分搜索树中删除键值为key的节点
+    void remove(Key key){
+        root = remove(root, key);
+    }
     
 private:
     //向以node为根的二叉搜索中，插入节点(key,value)
@@ -240,7 +244,7 @@ private:
     }
     
     // 删除掉以node为根的二分搜索树中的最小节点
-    // 返回删除节点后新的二分搜索树的根
+    // 自始而终，一直在遍历root，返回删除节点后新的二分搜索树的根
     Node* removeMin(Node* node){
         if (node->left == NULL) {
             //如果节点没有左子节点，那么删除节点后，由右子节点接替该节点的位置
@@ -255,7 +259,7 @@ private:
     }
     
     // 删除掉以node为根的二分搜索树中的最大节点
-    // 返回删除节点后新的二分搜索树的根
+    // 自始而终，一直在遍历root，返回删除节点后新的二分搜索树的根
     Node* removeMax(Node* node){
         if (node->right == NULL) {
             //如果节点没有右子节点，那么删除节点后，由左子节点接替该节点的位置
@@ -270,7 +274,7 @@ private:
     }
     
     // 删除掉以node为根的二分搜索树中键值为key的节点
-    //返回来代替被删除后key的新节点
+    // 自始而终，一直在遍历root，返回删除节点后新的二分搜索树的根
     Node* remove(Node* node, Key key){
         if (node == NULL) {
             return NULL;
@@ -311,6 +315,7 @@ private:
             delete node;
             count --;
             
+            //返回值为某个node的左或右子节点
             return successor;
         }
     }
