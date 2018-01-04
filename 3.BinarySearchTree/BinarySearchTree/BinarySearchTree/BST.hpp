@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <queue>
+#include <cassert>
 
 using namespace std;
 
@@ -90,12 +91,12 @@ public:
         queue<Node *> q;
         q.push(root);
         while (!q.empty()) {
-            
+            //取队首移出
             Node *node = q.front();
             q.pop();
             
             cout << node->key <<endl;
-            
+            //将其子节点加入队列
             if (node->left) {
                 q.push(node->left);
             }
@@ -104,6 +105,35 @@ public:
             }
         }
     }
+    
+    //寻找最小的键值
+    Key minimum(){
+        assert(count != 0);
+        Node* maxNode = minimum(root);
+        return maxNode->key;
+    }
+    
+    //寻找最大的键值
+    Key maximum(){
+        assert(count != 0);
+        Node* maxNode = maximum(root);
+        return maxNode->key;
+    }
+    
+    //删除最小值的节点
+    void removeMin(){
+        if (root) {
+            removemin(root);
+        }
+    }
+    
+    //删除最大值的节点
+    void removeMax(){
+        if (root) {
+            root = removeMax(root);
+        }
+    }
+    
     
 private:
     //向以node为根的二叉搜索中，插入节点(key,value)
@@ -184,6 +214,47 @@ private:
             delete node;
             count--;
         }
+    }
+    
+    Node* minimum(Node* node){
+        if (node->left == NULL) {
+            return node;
+        }
+        return minimum(node->left);
+    }
+    
+    Node* maximum(Node* node){
+        if (node->right == NULL) {
+            return node;
+        }
+        return maximum(node->right);
+    }
+    
+    
+    Node* removemin(Node* node){
+        if (node->left == NULL) {
+            //如果节点没有左子节点，那么删除节点后，由右子节点接替该节点的位置
+            Node* rightNode = node->right;
+            delete node;
+            count --;
+            return rightNode;
+        }
+        
+        node->left = removemin(node->left);
+        return node;
+    }
+    
+    Node* removeMax(Node* node){
+        if (node->right == NULL) {
+            //如果节点没有右子节点，那么删除节点后，由左子节点接替该节点的位置
+            Node *leftNode = node->left;
+            delete node;
+            count --;
+            return leftNode;
+        }
+        
+        node->right = removeMax(node->right);
+        return node;
     }
     
 };
