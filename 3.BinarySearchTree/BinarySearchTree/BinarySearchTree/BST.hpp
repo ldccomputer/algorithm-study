@@ -31,6 +31,13 @@ private:
             this->value = value;
             this->left = this->right = NULL;
         }
+        
+        Node(Node *node){
+            this->key = node->key;
+            this->value = node->value;
+            this->left = node->left;
+            this->right = node->right;
+        }
     };
     
     Node *root;
@@ -123,7 +130,7 @@ public:
     //删除最小值的节点
     void removeMin(){
         if (root) {
-            removemin(root);
+            removeMin(root);
         }
     }
     
@@ -216,6 +223,7 @@ private:
         }
     }
     
+    // 返回以node为根的二分搜索树的最小键值所在的节
     Node* minimum(Node* node){
         if (node->left == NULL) {
             return node;
@@ -223,6 +231,7 @@ private:
         return minimum(node->left);
     }
     
+    // 返回以node为根的二分搜索树的最大键值所在的节点
     Node* maximum(Node* node){
         if (node->right == NULL) {
             return node;
@@ -230,8 +239,9 @@ private:
         return maximum(node->right);
     }
     
-    
-    Node* removemin(Node* node){
+    // 删除掉以node为根的二分搜索树中的最小节点
+    // 返回删除节点后新的二分搜索树的根
+    Node* removeMin(Node* node){
         if (node->left == NULL) {
             //如果节点没有左子节点，那么删除节点后，由右子节点接替该节点的位置
             Node* rightNode = node->right;
@@ -240,10 +250,12 @@ private:
             return rightNode;
         }
         
-        node->left = removemin(node->left);
+        node->left = removeMin(node->left);
         return node;
     }
     
+    // 删除掉以node为根的二分搜索树中的最大节点
+    // 返回删除节点后新的二分搜索树的根
     Node* removeMax(Node* node){
         if (node->right == NULL) {
             //如果节点没有右子节点，那么删除节点后，由左子节点接替该节点的位置
@@ -255,6 +267,52 @@ private:
         
         node->right = removeMax(node->right);
         return node;
+    }
+    
+    // 删除掉以node为根的二分搜索树中键值为key的节点
+    //返回来代替被删除后key的新节点
+    Node* remove(Node* node, Key key){
+        if (node == NULL) {
+            return NULL;
+        }
+        
+        if (key < node->key) {
+            
+            node->left = remove(node->left,key);
+            return node;
+        }else if (key > node->key){
+            
+            node->right = remove(node->right,key);
+            return node;
+        }else{ //key == node->key
+            
+            if (node->left == NULL) {
+                Node* rightNode = node->right;
+                delete node;
+                count --;
+                return rightNode;
+            }
+            if (node->right == NULL) {
+                Node *leftNode = node->left;
+                delete node;
+                count --;
+                return leftNode;
+            }
+            
+            //以右节点的最小子节点为后继点
+            //因为后面需要删除该节点，所以需要拷贝出来
+            Node *successor = new Node(minimum(node->right));
+            count ++;
+            
+            //返回来是移除最小节点后的根节点，也就是node的右节点
+            successor->right = removeMin(node->right);
+            successor->left = node->left;
+            
+            delete node;
+            count --;
+            
+            return successor;
+        }
     }
     
 };
