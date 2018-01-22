@@ -7,9 +7,32 @@
 //
 
 #include <iostream>
+#include "AnnularQueue.hpp"
+#include <iostream>
+
+using namespace std;
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    
+    AnnularQueue *q = new AnnularQueue(4);
+    
+    //插入测试
+    q->enQueue(10);
+    q->enQueue(12);
+    q->enQueue(8);
+    q->enQueue(3);
+    q->queueTraverse();
+    
+    //移除测试
+    int e = 0;
+    q->deQueue(e);
+    cout << e << endl;
+    cout << endl;
+    q->queueTraverse();
+    
+    //清除测试
+    q->clearQueue();
+    q->queueTraverse();
+    
     return 0;
 }

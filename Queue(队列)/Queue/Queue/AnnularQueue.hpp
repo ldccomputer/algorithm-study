@@ -88,9 +88,10 @@ public:
     
     //遍历队列
     void queueTraverse(){
-        for (int i = m_iHead; i < m_iQueueLen; i++) {
-            cout << m_pQueue[i%m_iQueueLen] << endl;
+        for (int i = m_iHead; i < m_iQueueLen + m_iHead; i++) {
+            cout << m_pQueue[i%m_iQueueCapacity] << endl;
         }
+        cout << endl;
     }
 };
 
