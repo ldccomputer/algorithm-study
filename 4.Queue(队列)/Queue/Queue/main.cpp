@@ -34,5 +34,8 @@ int main(int argc, const char * argv[]) {
     q->clearQueue();
     q->queueTraverse();
     
+    delete q;
+    q = NULL;
+    
     return 0;
 }
