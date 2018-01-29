@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/ling/Desktop/C++/Stack/Coordinate.cpp
+Coordinate.h
+/Users/ling/Desktop/C++/Stack/Coordinate.h
+iostream
+-
+
+/Users/ling/Desktop/C++/Stack/Coordinate.h
+ostream
+-
+
+/Users/ling/Desktop/C++/Stack/MyStack.h
+stdio.h
+-
+iostream
+-
+
+/Users/ling/Desktop/C++/Stack/main.cpp
+iostream
+-
+Coordinate.h
+/Users/ling/Desktop/C++/Stack/Coordinate.h
+MyStack.h
+/Users/ling/Desktop/C++/Stack/MyStack.h
+
